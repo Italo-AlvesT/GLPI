@@ -1,6 +1,6 @@
 # Criar arquivo com conteúdo
 cat > /etc/apache2/conf-available/verdanadesk.conf << EOF
-<Directory "/var/www/verdanadesk/glpi/public/">
+<Directory "/var/www/NOME DA PASTA/glpi/public/">
     AllowOverride All
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
