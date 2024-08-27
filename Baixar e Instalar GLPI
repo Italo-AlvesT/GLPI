@@ -1,0 +1,10 @@
+# Criar diretório onde o GLPi será instalado
+mkdir /var/www/verdanadesk
+# Baixar o sistema GLPi
+wget -O- https://github.com/glpi-project/glpi/releases/download/10.0.15/glpi-10.0.15.tgz | tar -zxv -C /var/www/verdanadesk/
+# Movendo diretórios "files" e "config" para fora do GLPi 
+mv /var/www/verdanadesk/glpi/files /var/www/verdanadesk/
+mv /var/www/verdanadesk/glpi/config /var/www/verdanadesk/
+# Ajustando código do GLPi para o novo local dos diretórios
+sed -i 's/\/config/\/..\/config/g' /var/www/verdanadesk/glpi/inc/based_config.php
+sed -i 's/\/files/\/..\/files/g' /var/www/verdanadesk/glpi/inc/based_config.php
