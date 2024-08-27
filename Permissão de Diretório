@@ -1,0 +1,26 @@
+# Criar arquivo com conteúdo
+cat > /etc/apache2/conf-available/verdanadesk.conf << EOF
+<Directory "/var/www/verdanadesk/glpi/public/">
+    AllowOverride All
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php [QSA,L]
+    Options -Indexes
+    Options -Includes -ExecCGI
+    Require all granted
+    <IfModule mod_php7.c>
+        php_value max_execution_time 600
+        php_value always_populate_raw_post_data -1
+    </IfModule>
+    <IfModule mod_php8.c>
+        php_value max_execution_time 600
+        php_value always_populate_raw_post_data -1
+    </IfModule>
+</Directory>
+EOF
+# Habilitar o módulo rewrite do apache
+a2enmod rewrite
+# Habilita a configuração criada
+a2enconf verdanadesk.conf
+# Reinicia o servidor web considerando a nova configuração
+systemctl restart apache2
