@@ -1,0 +1,9 @@
+# Ajustar propriedade de arquivos da aplicação GLPi
+chown root:root /var/www/PASTA_INSTALAÇÃO/glpi -Rf
+# Ajustar propriedade de arquivos files, config e marketplace
+chown www-data:www-data /var/www/PASTA_INSTALAÇÃO/files -Rf
+chown www-data:www-data /var/www/PASTA_INSTALAÇÃO/config -Rf
+chown www-data:www-data /var/www/PASTA_INSTALAÇÃO/glpi/marketplace -Rf
+# Ajustar permissões gerais
+find /var/www/PASTA_INSTALAÇÃO/ -type d -exec chmod 755 {} \;
+find /var/www/PASTA_INSTALAÇÃO/ -type f -exec chmod 644 {} \;
