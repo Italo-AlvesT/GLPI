@@ -1,0 +1,15 @@
+# Criando o arquivo de configuração do site meu.verdanadesk.local
+cat > /etc/apache2/sites-available/verdanadesk.conf << EOF
+<VirtualHost *:80>
+        ServerName meu.verdanadesk.local
+        ServerAdmin suporte@verdanadesk.local
+        DocumentRoot /var/www/verdanadesk/glpi/public
+     
+        ErrorLog \${APACHE_LOG_DIR}/glpi.error.log
+        CustomLog \${APACHE_LOG_DIR}/glpi.access.log combined
+</VirtualHost>
+EOF
+# Habilitando o site no Apache
+a2ensite verdanadesk.conf
+# Reiniciando o Apache para valer as novas configurações
+systemctl restart apache2
