@@ -1,0 +1,9 @@
+# Instalando o Serviço MySQL
+apt install -y mariadb-server
+
+# Criando base de dados
+mysql -e "create database SEUBANCO_glpi character set utf8"
+# Criando usuário
+mysql -e "create user 'administrator'@'localhost' identified by '123456'"
+# Dando privilégios ao usuário
+mysql -e "grant all privileges on SEUBANCO_glpi.* to 'administrator'@'localhost' with grant option";
