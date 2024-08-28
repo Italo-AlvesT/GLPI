@@ -1,0 +1,4 @@
+# Instalando REDIS
+apt install -y redis
+# Dizendo ao GLPi para usar o REDIS para cache
+php /var/www/verdanadesk/glpi/bin/console cache:configure --context=core --dsn=redis://127.0.0.1:6379
